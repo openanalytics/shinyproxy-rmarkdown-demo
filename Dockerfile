@@ -1,6 +1,4 @@
-FROM openanalytics/r-ver:4.1.3
-
-LABEL maintainer="Tobias Verbeke <tobias.verbeke@openanalytics.eu>"
+FROM openanalytics/r-ver:4.3.2
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     pandoc \
