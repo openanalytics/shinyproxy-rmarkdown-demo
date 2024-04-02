@@ -1,13 +1,15 @@
-FROM rocker/r-ver:4.2.3
+FROM openanalytics/r-ver:4.3.2
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends pandoc libxt6 && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    pandoc \
+    pandoc-citeproc \
+    && rm -rf /var/lib/apt/lists/*
 
+RUN R -q -e "install.packages(c('shiny', 'rmarkdown'))"
 
-RUN R -q -e "install.packages(c('rmarkdown', 'shiny', 'flexdashboard'))"
+COPY rmarkdownDemo.Rmd .
 
-WORKDIR /app
-COPY index.Rmd .
+EXPOSE 3838
 
-CMD ["R", "-q", "-e", "rmarkdown::run(shiny_args = list(port = 3838, host = '0.0.0.0'))"]
+CMD R -q -e "rmarkdown::run(file = 'rmarkdownDemo.Rmd', shiny_args = list(port = 3838, host = '0.0.0.0'))"
+
