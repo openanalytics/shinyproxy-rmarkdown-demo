@@ -1,0 +1,30 @@
+---
+title: "R Markdown in ShinyProxy"
+output: html_document
+runtime: shiny
+---
+
+# 1. Dataset
+
+Waiting time between eruptions and the duration of the eruption for the Old Faithful geyser in Yellowstone National Park, Wyoming, USA.
+
+It's a data frame with 272 observations on 2 variables:
+
+*	_eruptions_:	numeric	Eruption time in mins
+*	_waiting_:	numeric	Waiting time to next eruption (in mins)
+
+
+# 2. Analysis
+
+```{r, echo=FALSE}
+sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
+plotOutput("distPlot")
+```
+
+```{r, context="server"}
+output$distPlot <- renderPlot({
+  x <- faithful[, 2]  # Old Faithful Geyser data
+  bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  hist(x, breaks = bins, main = "Histogram of waiting time", xlab = "Waiting time", col = 'darkgray', border = 'white')
+})
+```

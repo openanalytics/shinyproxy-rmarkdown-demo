@@ -19,6 +19,9 @@ proxy:
     - id: rmarkdown-demo
       display-name: Rmarkdown Demo Application
       container-image: openanalytics/shinyproxy-rmarkdown-demo
+    - id: rmarkdown-demo-prerendered
+      display-name: Rmarkdown Demo Application (prerendered)
+      container-image: openanalytics/shinyproxy-rmarkdown-demo:prerendered
 
 logging:
   file:
