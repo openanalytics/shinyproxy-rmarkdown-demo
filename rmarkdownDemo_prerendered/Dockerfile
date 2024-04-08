@@ -1,4 +1,4 @@
-FROM openanalytics/r-ver:4.3.2
+FROM openanalytics/r-ver:4.3.3
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     pandoc \
@@ -17,5 +17,8 @@ RUN R -q -e "rmarkdown::render('rmarkdownDemo.Rmd')"
 ENV RMARKDOWN_RUN_PRERENDER=0
 
 EXPOSE 3838
+
+RUN groupadd -g 1000 shiny && useradd -c 'shiny' -u 1000 -g 1000 -m -d /home/shiny -s /sbin/nologin shiny
+USER shiny
 
 CMD R -q -e "rmarkdown::run(file = 'rmarkdownDemo.Rmd', shiny_args = list(port = 3838, host = '0.0.0.0'))"
