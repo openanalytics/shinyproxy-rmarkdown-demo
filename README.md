@@ -10,7 +10,7 @@ To pull the image made in this repository from Docker Hub, use
 sudo docker pull openanalytics/shinyproxy-rmarkdown-demo
 ```
 
-the relevant Docker Hub repository can be found at https://hub.docker.com/r/openanalytics/shinyproxy-rmarkdown-demo
+the relevant Docker Hub repository can be found at <https://hub.docker.com/r/openanalytics/shinyproxy-rmarkdown-demo>.
 
 To build the image from the Dockerfile, clone this repository, then navigate to its root directory and run
 
@@ -49,8 +49,10 @@ specs:
     container-image: openanalytics/shinyproxy-rmarkdown-demo:prerendered
 ```
 
-# References
+## References
 
-* <https://rmarkdown.rstudio.com/authoring_shiny_prerendered>
+- <https://rmarkdown.rstudio.com/authoring_shiny_prerendered>
+- [ShinyProxy.io](https://shinyproxy.io/)
+- [All demos](https://shinyproxy.io/documentation/demos/)
 
 **(c) Copyright Open Analytics NV, 2024.**
