@@ -40,13 +40,14 @@ sudo docker build -t openanalytics/shinyproxy-rmarkdown-demo:prerendered .
 To add the Rmarkdown application to ShinyProxy add the following lines to its configuration file (see [application.yml](./application.yml) for a complete file):
 
 ```yaml
-specs:
-  - id: rmarkdown-demo
-    display-name: Rmarkdown Demo Application
-    container-image: openanalytics/shinyproxy-rmarkdown-demo
-  - id: rmarkdown-demo-prerendered
-    display-name: Rmarkdown Demo Application (prerendered)
-    container-image: openanalytics/shinyproxy-rmarkdown-demo:prerendered
+proxy:
+  specs:
+    - id: rmarkdown-demo
+      display-name: Rmarkdown Demo Application
+      container-image: openanalytics/shinyproxy-rmarkdown-demo
+    - id: rmarkdown-demo-prerendered
+      display-name: Rmarkdown Demo Application (prerendered)
+      container-image: openanalytics/shinyproxy-rmarkdown-demo:prerendered
 ```
 
 ## References
